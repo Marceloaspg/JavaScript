@@ -1,18 +1,18 @@
-let num = document.getElementById('fnum')
-let lista = document.getElementById('flista')
-let res = document.getElementById('res')
-let valores = []
+let num = document.querySelector('input#num')
+let sel = document.querySelector('select#sel')
+let res = document.querySelector('div#res')
+let array = []
 
-function isNumero(n) {
-    if(Number(n) >= 1 && Number(n) <= 100) {
+function numero(n) {
+    if(Number(num.value) >= 1 && Number(num.value) <= 100) {
         return true
     } else {
         return false
     }
 }
 
-function inLista(n, l) {
-    if (l.indexOf(Number(n)) != -1) {
+function lista(n, l) {
+    if(l.indexOf(Number(num.value)) != -1) {
         return true
     } else {
         return false
@@ -20,34 +20,39 @@ function inLista(n, l) {
 }
 
 function adicionar() {
+if(numero(num.value) && !lista(num.value, array)) {
+    array.push(Number(num.value))
+    let item = document.createElement('option')
+    item.text = `Valor ${num.value} foi adicionado.`
+    sel.appendChild(item)
+    item.style.color = 'red'
     res.innerHTML = ''
-    if (isNumero(num.value) && !inLista(num.value, valores)) {
-       let n = Number(num.value)
-       let sel = document.createElement('option')
-       sel.text = `O Valor ${n} foi adicionado`
-       sel.value = `${n}`
-       valores.push(Number(sel.value))
-       lista.appendChild(sel)
-   
-    } else {
-        alert('Valor inválido ou ja encontrado na lista!')
-    }
-    num.value = ''
-    num.focus()
+} else {
+    alert('Número inválido ou ja encontrado na lista!')
+}
+num.value = ''
+num.focus()
 }
 
-  function finalizar() {
-      if (valores.length == 0) {
-          alert('Adicione Valores antes de finalizar!')
-      } else {
+function analise() {
+ if (array.length == 0) {
+     alert('Adicione Valores antes de Analisar!')
+ } else {
+    total = array.length
+    array.sort(function(a,b){return a-b})
+    menor = array[0]
+    maior = array[array.length -1]
+    soma = 0
+    for (pos in array) {
+        soma += array[pos]    
+    }
+    media = soma / total
 
-            let sel = valores
-    valores.sort()
-    res.innerHTML += `<p>Ao todo, temos ${sel.length} valores cadastrados.</p>`
-    res.innerHTML += `<p>O maior valor informado foi ${sel[sel.indexOf[100]]}</p>`
-    res.innerHTML += `<p>O menor valor informado foi ${sel[0]}</p>`
-    res.innerHTML += `<p>Somando todos os valores, temos ${valores}</p>`
-    res.innerHTML += `<p>A média dos valores adicionados é ${sel.length / valores.length}</p>`
-      }
+    res.innerHTML += `<p>Ao todo, Temos ${total} valores Adicionados.</p>`
+    res.innerHTML += `<p>O maior valor Adicionado Foi ${maior}.</p>`
+    res.innerHTML += `<p>O menor valor Adicionado foi ${menor}.</p>`
+    res.innerHTML += `<p>A soma entre todos os números é ${soma}.</p>` 
+    res.innerHTML += `<p>A média dos Valores Adicionados é ${media}.</p>`
+ }  
+}
 
-}  
