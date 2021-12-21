@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia da Semana</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: rgb(0, 0, 0);
+            font: italic 20pt italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <h1>Dia exato da semana!</h1>  
+ <div id="res">
+
+ </div>
+ <script>
+     var agora = new Date()
+     var diasem = agora.getDay()
+     var res = document.getElementById('res')
+     switch(diasem) {
+         case 0: 
+         res.innerHTML = `<strong>Hoje é Domingo, tenha um ótimo final de semana!</strong>`
+         break
+         case 1:
+         res.innerHTML = `<strong>Hoje é Segunda-feira, tenha uma ótima semana!</strong>`
+         break
+         case 2:
+         res.innerHTML = `<strong>Hoje é Terça-feira, tenha uma ótima semana!</stong>`
+         break
+         case 3:
+         res.innerHTML = `<strong>Hoje é Quarta-feira, tenha uma ótima semana!</stong>`
+         break
+         case 4:
+         res.innerHTML = `<strong>Hoje é Quinta-feira, tenha uma ótima semana!</stong>`
+         break
+         case 5:
+         res.innerHTML = `<strong>Hoje é Sexta-feira, tenha uma ótima semana!</stong>`
+        break
+        case 6:
+        res.innerHTML = `<strong>Hoje é Sábado, tenha um ótimo final de semana!</stong>`
+        break
+        default:
+            res.innerHTML = '[ERRO] dia da semana inválido!'
+     }
+ </script> 
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Votos Obrigatórios</title>
+    <style>
+        body {
+           background-color: chartreuse; 
+           color: white;
+           font: normal 20pt arial;
+        }
+    </style>
+</head>
+<body>
+<h1>Verificador de Votos Obrigatórios</h1>
+<input type="number" name="ida" id="ida">
+<input type="button" value="Checar" onclick="check()">
+<div id="res">
+Aguardando o Preenchimento dos dados...
+</div>
+
+<script>
+    function check() {
+        var ida = document.querySelector('input#ida')
+        var res = document.querySelector('div#res')
+        var convi = Number(ida.value)
+        res.innerHTML = `<p>Você tem ${convi} anos de idade.</p>`
+        if (convi < 16) {       
+            res.innerHTML += 'Você ainda Não tem direito a voto.'
+        } else if (convi < 18 || convi > 65) {
+            res.innerHTML += 'Você tem o direito ao Voto Opicional.'
+        } else {
+            res.innerHTML += 'Você tem o dever de votar. Voto Obrigatório!'
+        }
+    }
+</script>    
+</body>
+</html>

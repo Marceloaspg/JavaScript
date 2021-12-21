@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+        body {
+            background-color: violet;
+            color: white;
+            font: normal 15pt italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Hora Exata do Dia
+    </h1>
+    <div id="hora">
+
+    </div>
+ <script>
+     var agora = new Date()
+     var hor = agora.getHours()
+     var min = agora.getMinutes()
+     var sec = agora.getSeconds()
+     var now = document.getElementById('hora')
+     now.innerHTML = `<p>Agora são exatamente ${hor} horas ${min} minutos e ${sec} segundos</p>`
+     if (hor < 6) {
+         now.innerHTML += 'Tenha uma Boa Madrugada!'
+     } else if (hor < 12) {
+         now.innerHTML += 'Tenha um Bom Dia!'
+     } else if (hor <= 18) {
+         now.innerHTML += 'Tenha uma Boa Tarde!'
+     } else {
+         now.innerHTML += 'Tenha ma Boa Noite!'
+     }
+ </script>   
+</body>
+</html>
